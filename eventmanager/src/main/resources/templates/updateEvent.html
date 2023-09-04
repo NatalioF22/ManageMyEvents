@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Event</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="header :: header"></div>
+<div class="container mx-auto mt-4">
+    <h1 class="text-3xl font-bold mb-4">Update Event</h1>
+
+    <form action="/updateEvent/{id}" th:action="@{/updateEvent/{id}(id=${event.id})}" method="post">
+
+    <input type="hidden" id="eventId" name="eventId" th:value="${event.id}">
+
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" name="eventName" th:value="${event.eventName}" class="border rounded p-2 mb-4"><br>
+
+        <label for="eventDescription">Event Description:</label>
+        <input type="text" id="eventDescription" name="eventDescription" th:value="${event.eventDescription}" class="border rounded p-2 mb-4"><br>
+
+        <label for="eventLocation">Event Location:</label>
+        <input type="text" id="eventLocation" name="eventLocation" th:value="${event.eventLocation}" class="border rounded p-2 mb-4"><br>
+
+        <label for="eventType">Event Type:</label>
+        <input type="text" id="eventType" name="eventType" th:value="${event.eventType}" class="border rounded p-2 mb-4"><br>
+
+        <label for="eventWebsite">Event Website:</label>
+        <input type="text" id="eventWebsite" name="eventWebsite" th:value="${event.eventWebsite}" class="border rounded p-2 mb-4"><br>
+
+        <label for="eventDate">Event Date:</label>
+        <input type="date" id="eventDate" name="eventDate" th:value="${#dates.format(event.eventDate, 'yyyy-MM-dd')}" class="border rounded p-2 mb-4"><br>
+
+        <input type="submit" value="Update" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    </form>
+</div>
+<div th:insert="footer :: footer"></div>
+</body>
+</html>
